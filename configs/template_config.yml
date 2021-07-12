@@ -1,0 +1,44 @@
+# Basic configuration - Mandatory changes for having your project setup.
+--- 
+config:
+ - name: setup
+   platform: DESKTOP # accepted values: DESKTOP
+ - name: docs
+   git_repo: https://github.com/redhat-scholars/openshift-starter-guides
+   credentials_file: ./git_credentials #optional if repo is public
+   title: OpenShift Starter Guides for Developers
+#----------------------------------------------------------------------------
+# Change ONLY if you need a more advanced configuration in your project.
+#----------------------------------------------------------------------------
+panels:
+ - name: docs
+   height: 100%
+   width: 40%
+   column: 1
+ - name: terminal
+   height: 60%
+   width: 60%
+   column: 2
+assets:
+ - name: terminal
+   method: image
+   source: quay.io/openshifthomeroom/workshop-terminal:latest
+ - name: content
+   method: source
+   source: ../../build/site/
+ - name: docs
+   ports: 10080:10080
+   mount_volume_source: ./usr/docs/
+   mount_volume_target: ./docs/
+ - name: UI
+   ports: 10080:10080
+   output: quay.io/redhat-gpte/containers-UI:latest
+config:
+ - name: setup
+   release_version: 1.0
+ - name: docs
+   branch: main
+   create_navigation_page: yes
+   labs_only: no
+   landing_page: index.adoc
+   version: 1.0
