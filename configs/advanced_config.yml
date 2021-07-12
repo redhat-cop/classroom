@@ -1,10 +1,12 @@
 panels:
- - name: doc
-   height: 80%
+ - name: docs
+   height: 100%
    width: 40%
+   column: 1
  - name: terminal
-   height: 80%
+   height: 60%
    width: 60%
+   column: 2
 assets:
  - name: terminal
    method: image
@@ -12,21 +14,21 @@ assets:
  - name: content
    method: source
    source: ../../build/site/
- - name: terminal
+ - name: docs
    ports: 10080:10080
    mount_volume_source: ./usr/docs/
    mount_volume_target: ./docs/
    output: quay.io/redhat-gpte/containers-lab:latest
+ - name: UI
+   ports: 10080:10080
+   output: quay.io/redhat-gpte/containers-UI:latest
 config:
  - name: setup
    release_version: 1.0
-   platform: OCP/KUBE/VM/LAPTOP
  - name: docs
-   git_repo: https://github.com/redhat-gpe/ocp4_advanced_deployment.git
+   git_repo: https://github.com/redhat-scholars/openshift-starter-guides
    branch: main
-   create_navigation_page: yes/no
-   credentials_file: ./git_credentials 
-   labs_only: yes/no
+   create_navigation_page: yes
+   labs_only: no
    landing_page: index.adoc
-   title: Adv. Cloud Native Development
    version: 1.0

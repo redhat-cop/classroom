@@ -1,0 +1,32 @@
+panels:
+ - name: doc
+   height: 80%
+   width: 40%
+ - name: terminal
+   height: 80%
+   width: 60%
+assets:
+ - name: terminal
+   method: image
+   source: quay.io/openshifthomeroom/workshop-terminal:latest
+ - name: content
+   method: source
+   source: ../../build/site/
+ - name: terminal
+   ports: 10080:10080
+   mount_volume_source: ./usr/docs/
+   mount_volume_target: ./docs/
+   output: quay.io/redhat-gpte/containers-lab:latest
+config:
+ - name: setup
+   release_version: 1.0
+   platform: LAPTOP #OCP/KUBE/VM/LAPTOP
+ - name: docs
+   git_repo: https://github.com/redhat-scholars/openshift-starter-guides
+   branch: main
+   create_navigation_page: yes/no
+   credentials_file: ./git_credentials 
+   labs_only: yes/no
+   landing_page: index.adoc
+   title: OpenShift Starter Guides for Developers
+   version: 1.0

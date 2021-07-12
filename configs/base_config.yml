@@ -1,0 +1,7 @@
+config:
+ - name: setup
+   platform: DESKTOP # accepted values: DESKTOP
+ - name: docs
+   git_repo: https://github.com/redhat-scholars/openshift-starter-guides
+   credentials_file: ./git_credentials #optional if repo is public
+   title: OpenShift Starter Guides for Developers
