@@ -15,14 +15,16 @@ panels:
    height: 100%
    width: 40%
    column: 1
+   url: http://localhost/content/1/index.html
  - name: terminal
    height: 60%
    width: 60%
    column: 2
+   url: http://localhost:7681
 assets:
  - name: terminal
    method: image
-   source: quay.io/openshifthomeroom/workshop-terminal:latest
+   source: quay.io/redhat-scholars/ttyd-openshift:latest
  - name: content
    method: source
    source: ../../build/site/
